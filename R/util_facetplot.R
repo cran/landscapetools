@@ -10,19 +10,20 @@
 #' size of the maps it is advisable to store the plot in an object and print it to
 #' a file. This will help with compressing and rendering the image.
 #'
-#' @param x Raster* Layer, Stack, Brick or a list of rasterLayers.
+#' @param mpdta Raster* Layer, Stack, Brick or a list of rasterLayers.
 #' @param nrow,ncol Number of rows and columns.
 #'
 #' @return ggplot
 #'
 #' @examples
 #' \dontrun{
-#' l1 <- nlmr::nlm_fBm(64, 64)
-#' l2 <- nlmr::nlm_planargradient(64, 64)
-#' l3 <- nlmr::nlm_randomrectangularcluster(ncol = 60, nrow = 60, minl = 5, maxl = 10)
-#' l4 <- nlmr::nlm_random(64, 64)
+#' l1 <- NLMR::nlm_fbm(64, 64)
+#' l2 <- NLMR::nlm_planargradient(64, 64)
+#' l3 <- NLMR::nlm_randomrectangularcluster(ncol = 60, nrow = 60, minl = 5, maxl = 10)
+#' l4 <- NLMR::nlm_random(64, 64)
 #'
 #' bri1 <- raster::brick(l1, l2)
+#' names(bri1) <- c("FBM", "GRADIENT")
 #' util_facetplot(bri1)
 #'
 #' lst1 <- list(layer1 = l1,
@@ -38,22 +39,24 @@
 #' @export
 #'
 
-util_facetplot <- function(x, nrow = NULL, ncol = NULL) {
+util_facetplot <- function(mpdta, nrow = NULL, ncol = NULL) {
 
-  if (checkmate::testClass(x, "RasterLayer") ||
-      checkmate::testClass(x, "RasterStack") ||
-      checkmate::testClass(x, "RasterBrick")) {
+  if (checkmate::testClass(mpdta, "RasterLayer") ||
+      checkmate::testClass(mpdta, "RasterStack") ||
+      checkmate::testClass(mpdta, "RasterBrick")) {
 
     maplist <- list()
-    for (i in seq_len(raster::nlayers(x))) {
-      maplist <- append(maplist, list(raster::raster(x, layer = i)))
+    for (i in seq_len(raster::nlayers(mpdta))) {
+      maplist <- append(maplist, list(raster::raster(mpdta, layer = i)))
     }
-    x <- magrittr::set_names(maplist, names(x))
+    mpdta <- magrittr::set_names(maplist, names(mpdta))
   }
 
-  maptibb <- tibble::enframe(x, "id", "maps") %>%
+  maptibb <- tibble::enframe(mpdta, "id", "maps") %>%
              dplyr::mutate(maps = purrr::map(.$maps, util_raster2tibble)) %>%
              tidyr::unnest()
+  # %>%
+  #            dplyr::mutate(id = factor(id, levels = names(mpdta)))
 
   p <- ggplot2::ggplot(maptibb, ggplot2::aes_string("x", "y")) +
         ggplot2::coord_fixed() +

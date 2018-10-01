@@ -2,7 +2,6 @@
 % Please edit documentation in R/theme_nlm.R
 \name{theme_nlm}
 \alias{theme_nlm}
-\alias{theme_nlm}
 \alias{theme_nlm_discrete}
 \alias{theme_nlm_grey}
 \alias{theme_nlm_grey_discrete}
@@ -11,81 +10,90 @@
 \usage{
 theme_nlm(base_family = "Roboto Condensed", base_size = 11.5,
   plot_title_family = base_family, plot_title_size = 18,
-  plot_title_face = "bold", plot_title_margin = 10, subtitle_family = if
-  (.Platform$OS.type == "windows") "Roboto Condensed" else
-  "Roboto Condensed Light", subtitle_size = 13, subtitle_face = "plain",
-  subtitle_margin = 15, strip_text_family = base_family,
-  strip_text_size = 12, strip_text_face = "plain",
-  strip.background = "grey80", caption_family = if (.Platform$OS.type ==
-  "windows") "Roboto Condensed" else "Roboto Condensed Light",
-  caption_size = 9, caption_face = "plain", caption_margin = 10,
+  plot_title_face = "bold", plot_title_margin = 10,
+  subtitle_family = if (.Platform$OS.type == "windows")
+  "Roboto Condensed" else "Roboto Condensed Light", subtitle_size = 13,
+  subtitle_face = "plain", subtitle_margin = 15,
+  strip_text_family = base_family, strip_text_size = 12,
+  strip_text_face = "plain", strip.background = "grey80",
+  caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed"
+  else "Roboto Condensed Light", caption_size = 9,
+  caption_face = "plain", caption_margin = 10,
   axis_text_size = base_size, axis_title_family = base_family,
-  axis_title_size = 9, axis_title_face = "plain", axis_title_just = "rt",
-  plot_margin = ggplot2::margin(0, 0, 0, 0), grid_col = "#cccccc",
-  grid = TRUE, axis_col = "#cccccc", axis = FALSE, ticks = FALSE,
-  legend_title = "Z", legend_labels = NULL, legend_text_size = 8,
-  legend_title_size = 10, ratio = 1, viridis_scale = "D", ...)
+  axis_title_size = 9, axis_title_face = "plain",
+  axis_title_just = "rt", plot_margin = ggplot2::unit(c(0, 0, 0, 0),
+  "lines"), grid_col = "#cccccc", grid = TRUE, axis_col = "#cccccc",
+  axis = FALSE, ticks = FALSE, legend_title = "Z",
+  legend_labels = NULL, legend_text_size = 8, legend_title_size = 10,
+  ratio = 1, viridis_scale = "D", ...)
 
 theme_nlm_discrete(base_family = "Roboto Condensed", base_size = 11.5,
   plot_title_family = base_family, plot_title_size = 18,
-  plot_title_face = "bold", plot_title_margin = 10, subtitle_family = if
-  (.Platform$OS.type == "windows") "Roboto Condensed" else
-  "Roboto Condensed Light", subtitle_size = 13, subtitle_face = "plain",
-  subtitle_margin = 15, strip_text_family = base_family,
-  strip_text_size = 12, strip_text_face = "plain",
-  strip.background = "grey80", caption_family = if (.Platform$OS.type ==
-  "windows") "Roboto Condensed" else "Roboto Condensed Light",
-  caption_size = 9, caption_face = "plain", caption_margin = 10,
+  plot_title_face = "bold", plot_title_margin = 10,
+  subtitle_family = if (.Platform$OS.type == "windows")
+  "Roboto Condensed" else "Roboto Condensed Light", subtitle_size = 13,
+  subtitle_face = "plain", subtitle_margin = 15,
+  strip_text_family = base_family, strip_text_size = 12,
+  strip_text_face = "plain", strip.background = "grey80",
+  caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed"
+  else "Roboto Condensed Light", caption_size = 9,
+  caption_face = "plain", caption_margin = 10,
   axis_text_size = base_size, axis_title_family = base_family,
-  axis_title_size = 9, axis_title_face = "plain", axis_title_just = "rt",
-  plot_margin = ggplot2::margin(0, 0, 0, 0), grid_col = "#cccccc",
-  grid = TRUE, axis_col = "#cccccc", axis = FALSE, ticks = FALSE,
-  legend_title = "Z", legend_labels = NULL, legend_text_size = 8,
-  legend_title_size = 10, ratio = 1, viridis_scale = "D", ...)
+  axis_title_size = 9, axis_title_face = "plain",
+  axis_title_just = "rt", plot_margin = ggplot2::unit(c(0, 0, 0, 0),
+  "lines"), grid_col = "#cccccc", grid = TRUE, axis_col = "#cccccc",
+  axis = FALSE, ticks = FALSE, legend_title = "Z",
+  legend_labels = NULL, legend_text_size = 8, legend_title_size = 10,
+  ratio = 1, viridis_scale = "D", ...)
 
 theme_nlm_grey(base_family = "Roboto Condensed", base_size = 11.5,
   plot_title_family = base_family, plot_title_size = 18,
-  plot_title_face = "bold", plot_title_margin = 10, subtitle_family = if
-  (.Platform$OS.type == "windows") "Roboto Condensed" else
-  "Roboto Condensed Light", subtitle_size = 13, subtitle_face = "plain",
-  subtitle_margin = 15, strip_text_family = base_family,
-  strip_text_size = 12, strip_text_face = "plain",
-  strip.background = "grey80", caption_family = if (.Platform$OS.type ==
-  "windows") "Roboto Condensed" else "Roboto Condensed Light",
-  caption_size = 9, caption_face = "plain", caption_margin = 10,
+  plot_title_face = "bold", plot_title_margin = 10,
+  subtitle_family = if (.Platform$OS.type == "windows")
+  "Roboto Condensed" else "Roboto Condensed Light", subtitle_size = 13,
+  subtitle_face = "plain", subtitle_margin = 15,
+  strip_text_family = base_family, strip_text_size = 12,
+  strip_text_face = "plain", strip.background = "grey80",
+  caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed"
+  else "Roboto Condensed Light", caption_size = 9,
+  caption_face = "plain", caption_margin = 10,
   axis_text_size = base_size, axis_title_family = base_family,
-  axis_title_size = 9, axis_title_face = "plain", axis_title_just = "rt",
-  plot_margin = ggplot2::margin(0, 0, 0, 0), grid_col = "#cccccc",
-  grid = TRUE, axis_col = "#cccccc", axis = FALSE, ticks = FALSE,
-  legend_title = "Z", legend_labels = NULL, legend_text_size = 8,
-  legend_title_size = 10, ratio = 1, ...)
+  axis_title_size = 9, axis_title_face = "plain",
+  axis_title_just = "rt", plot_margin = ggplot2::unit(c(0, 0, 0, 0),
+  "lines"), grid_col = "#cccccc", grid = TRUE, axis_col = "#cccccc",
+  axis = FALSE, ticks = FALSE, legend_title = "Z",
+  legend_labels = NULL, legend_text_size = 8, legend_title_size = 10,
+  ratio = 1, ...)
 
-theme_nlm_grey_discrete(base_family = "Roboto Condensed", base_size = 11.5,
-  plot_title_family = base_family, plot_title_size = 18,
-  plot_title_face = "bold", plot_title_margin = 10, subtitle_family = if
-  (.Platform$OS.type == "windows") "Roboto Condensed" else
-  "Roboto Condensed Light", subtitle_size = 13, subtitle_face = "plain",
-  subtitle_margin = 15, strip_text_family = base_family,
-  strip_text_size = 12, strip_text_face = "plain",
-  strip.background = "grey80", caption_family = if (.Platform$OS.type ==
+theme_nlm_grey_discrete(base_family = "Roboto Condensed",
+  base_size = 11.5, plot_title_family = base_family,
+  plot_title_size = 18, plot_title_face = "bold",
+  plot_title_margin = 10, subtitle_family = if (.Platform$OS.type ==
   "windows") "Roboto Condensed" else "Roboto Condensed Light",
-  caption_size = 9, caption_face = "plain", caption_margin = 10,
+  subtitle_size = 13, subtitle_face = "plain", subtitle_margin = 15,
+  strip_text_family = base_family, strip_text_size = 12,
+  strip_text_face = "plain", strip.background = "grey80",
+  caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed"
+  else "Roboto Condensed Light", caption_size = 9,
+  caption_face = "plain", caption_margin = 10,
   axis_text_size = base_size, axis_title_family = base_family,
-  axis_title_size = 9, axis_title_face = "plain", axis_title_just = "rt",
-  plot_margin = ggplot2::margin(0, 0, 0, 0), grid_col = "#cccccc",
-  grid = TRUE, axis_col = "#cccccc", axis = FALSE, ticks = FALSE,
-  legend_title = "Z", legend_labels = NULL, legend_text_size = 8,
-  legend_title_size = 10, ratio = 1, ...)
+  axis_title_size = 9, axis_title_face = "plain",
+  axis_title_just = "rt", plot_margin = ggplot2::unit(c(0, 0, 0, 0),
+  "lines"), grid_col = "#cccccc", grid = TRUE, axis_col = "#cccccc",
+  axis = FALSE, ticks = FALSE, legend_title = "Z",
+  legend_labels = NULL, legend_text_size = 8, legend_title_size = 10,
+  ratio = 1, ...)
 
 theme_facetplot(base_family = "Roboto Condensed", base_size = 11.5,
   plot_title_family = base_family, plot_title_size = 18,
-  plot_title_face = "bold", plot_title_margin = 10, subtitle_family = if
-  (.Platform$OS.type == "windows") "Roboto Condensed" else
-  "Roboto Condensed Light", subtitle_size = 13, subtitle_face = "plain",
-  subtitle_margin = 15, strip.background = "grey80", caption_family = if
-  (.Platform$OS.type == "windows") "Roboto Condensed" else
-  "Roboto Condensed Light", caption_size = 9, caption_face = "plain",
-  caption_margin = 10, ratio = 1, viridis_scale = "D", ...)
+  plot_title_face = "bold", plot_title_margin = 10,
+  subtitle_family = if (.Platform$OS.type == "windows")
+  "Roboto Condensed" else "Roboto Condensed Light", subtitle_size = 13,
+  subtitle_face = "plain", subtitle_margin = 15,
+  strip.background = "grey80", caption_family = if (.Platform$OS.type
+  == "windows") "Roboto Condensed" else "Roboto Condensed Light",
+  caption_size = 9, caption_face = "plain", caption_margin = 10,
+  ratio = 1, viridis_scale = "D", ...)
 }
 \arguments{
 \item{base_family}{base font family size}
@@ -200,7 +208,7 @@ rasterVis::gplot(x) +
   theme_nlm() +
   ggplot2::ggtitle("Example map",
                    subtitle = "with continuous viridis color scale") +
-  ggplot2::labs(caption = "Example map simulated with the R package nlmr.")
+  ggplot2::labs(caption = "Example map simulated with the R package NLMR.")
 
 # grey + continuous
 rasterVis::gplot(x) +
@@ -210,7 +218,7 @@ rasterVis::gplot(x) +
   theme_nlm_grey() +
   ggplot2::ggtitle("Example map",
                    subtitle = "with continuous grey color scale") +
-  ggplot2::labs(caption = "Example map simulated with the R package nlmr.")
+  ggplot2::labs(caption = "Example map simulated with the R package NLMR.")
 
 # color + discrete
 rasterVis::gplot(y) +
@@ -220,7 +228,7 @@ rasterVis::gplot(y) +
   theme_nlm_discrete() +
   ggplot2::ggtitle("Example map",
                    subtitle = "with discrete viridis color scale") +
-  ggplot2::labs(caption = "Random map simulated with the R package nlmr.")
+  ggplot2::labs(caption = "Random map simulated with the R package NLMR.")
 
 # grey + discrete
 rasterVis::gplot(y) +
@@ -230,7 +238,7 @@ rasterVis::gplot(y) +
   theme_nlm_grey_discrete() +
   ggplot2::ggtitle("Example map",
                    subtitle = "with discrete grey color scale") +
-  ggplot2::labs(caption = "Random map simulated with the R package nlmr.")
+  ggplot2::labs(caption = "Random map simulated with the R package NLMR.")
 
 # have a look at theme_facetplot
 binary_maps <- util_binarize(x, c(0.3, 0.5, 0.7, 0.9))

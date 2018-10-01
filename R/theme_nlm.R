@@ -80,7 +80,7 @@
 #'   theme_nlm() +
 #'   ggplot2::ggtitle("Example map",
 #'                    subtitle = "with continuous viridis color scale") +
-#'   ggplot2::labs(caption = "Example map simulated with the R package nlmr.")
+#'   ggplot2::labs(caption = "Example map simulated with the R package NLMR.")
 #'
 #' # grey + continuous
 #' rasterVis::gplot(x) +
@@ -90,7 +90,7 @@
 #'   theme_nlm_grey() +
 #'   ggplot2::ggtitle("Example map",
 #'                    subtitle = "with continuous grey color scale") +
-#'   ggplot2::labs(caption = "Example map simulated with the R package nlmr.")
+#'   ggplot2::labs(caption = "Example map simulated with the R package NLMR.")
 #'
 #' # color + discrete
 #' rasterVis::gplot(y) +
@@ -100,7 +100,7 @@
 #'   theme_nlm_discrete() +
 #'   ggplot2::ggtitle("Example map",
 #'                    subtitle = "with discrete viridis color scale") +
-#'   ggplot2::labs(caption = "Random map simulated with the R package nlmr.")
+#'   ggplot2::labs(caption = "Random map simulated with the R package NLMR.")
 #'
 #' # grey + discrete
 #' rasterVis::gplot(y) +
@@ -110,7 +110,7 @@
 #'   theme_nlm_grey_discrete() +
 #'   ggplot2::ggtitle("Example map",
 #'                    subtitle = "with discrete grey color scale") +
-#'   ggplot2::labs(caption = "Random map simulated with the R package nlmr.")
+#'   ggplot2::labs(caption = "Random map simulated with the R package NLMR.")
 #'
 #' # have a look at theme_facetplot
 #' binary_maps <- util_binarize(x, c(0.3, 0.5, 0.7, 0.9))
@@ -150,7 +150,7 @@ theme_nlm <- function(base_family = "Roboto Condensed",
                       axis_title_size = 9,
                       axis_title_face = "plain",
                       axis_title_just = "rt",
-                      plot_margin = ggplot2::margin(0, 0, 0, 0),
+                      plot_margin = ggplot2::unit(c(0, 0, 0, 0), "lines"),
                       grid_col = "#cccccc",
                       grid = TRUE,
                       axis_col = "#cccccc",
@@ -267,7 +267,7 @@ theme_nlm_discrete <- function(base_family = "Roboto Condensed",
                                axis_title_size = 9,
                                axis_title_face = "plain",
                                axis_title_just = "rt",
-                               plot_margin = ggplot2::margin(0, 0, 0, 0),
+                               plot_margin = ggplot2::unit(c(0, 0, 0, 0), "lines"),
                                grid_col = "#cccccc",
                                grid = TRUE,
                                axis_col = "#cccccc",
@@ -390,7 +390,7 @@ theme_nlm_grey <- function(base_family = "Roboto Condensed",
                            axis_title_size = 9,
                            axis_title_face = "plain",
                            axis_title_just = "rt",
-                           plot_margin = ggplot2::margin(0, 0, 0, 0),
+                           plot_margin = ggplot2::unit(c(0, 0, 0, 0), "lines"),
                            grid_col = "#cccccc",
                            grid = TRUE,
                            axis_col = "#cccccc",
@@ -507,7 +507,7 @@ theme_nlm_grey_discrete <-
              axis_title_size = 9,
              axis_title_face = "plain",
              axis_title_just = "rt",
-             plot_margin = ggplot2::margin(0, 0, 0, 0),
+             plot_margin = ggplot2::unit(c(0, 0, 0, 0), "lines"),
              grid_col = "#cccccc",
              grid = TRUE,
              axis_col = "#cccccc",
@@ -654,6 +654,7 @@ theme_facetplot <-
                 family = caption_family,
                 face = caption_face
             ),
+            plot.margin = ggplot2::unit(c(0, 0, 0, 0), "lines"),
             ...
         )
 
