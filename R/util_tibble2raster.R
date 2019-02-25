@@ -15,16 +15,19 @@
 #' @return Raster* object
 #'
 #' @examples
-#' maptib <- util_raster2tibble(rndmap)
+#' maptib <- util_raster2tibble(random_landscape)
 #' mapras <- util_tibble2raster(maptib)
-#' all.equal(rndmap, mapras)
+#' all.equal(random_landscape, mapras)
 #'
 #' @aliases util_tibble2raster
 #' @rdname util_tibble2raster
 #'
 #' @export
 #'
+util_tibble2raster <- function(x) UseMethod("util_tibble2raster")
 
+#' @name util_tibble2raster
+#' @export
 util_tibble2raster <- function(x) {
 
   # Create raster with values from tibble ----

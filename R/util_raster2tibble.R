@@ -10,7 +10,7 @@
 #' @return a tibble
 #'
 #' @examples
-#' maptib <- util_raster2tibble(fbmmap)
+#' maptib <- util_raster2tibble(fractal_landscape)
 #' \dontrun{
 #' library(ggplot2)
 #' ggplot(maptib, aes(x,y)) +
@@ -22,18 +22,18 @@
 #'
 #' @export
 #'
+util_raster2tibble <- function(x) UseMethod("util_raster2tibble")
 
+#' @name util_raster2tibble
+#' @export
 util_raster2tibble <- function(x) {
-
-  # Check function arguments ----
-  checkmate::assert_class(x, "RasterLayer")
 
   # Create empty tibble with the same dimension as the raster ----
   grd <- tibble::as_tibble(expand.grid(x = seq(1, raster::ncol(x)),
                                        y = seq(raster::nrow(x), 1)))
 
   # Fill with raster values ----
-  grd <- dplyr::bind_cols(grd, z = raster::values(x))
+  grd$z <- raster::values(x)
 
   return(grd)
 }

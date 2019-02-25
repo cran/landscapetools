@@ -34,7 +34,7 @@
 #' @param ticks ticks TRUE/FALSE
 #' @param legend_title Title of the legend (default `"Z"`)
 #' @param legend_labels Labels for the legend ticks, if
-#' used with \code{\link{util_plot}} they are automatically derived.
+#' used with \code{\link{show_landscape}} they are automatically derived.
 #' @param legend_text_size legend text size, default 8
 #' @param legend_title_size legend text size, default 10
 #' @param ratio
@@ -51,73 +51,10 @@
 #' A focused theme to visualize raster data that sets a lot of defaults for the
 #' \code{ggplot2::theme}.
 #'
-#' The theme can make use of the Roboto Condensed font (Open Source font from
-#' Google).
-#' If your local font library does not contain Roboto as a font, you can
-#' import it via \code{\link{util_import_roboto_condensed}} (highly recommended).
-#'
 #' The functions are setup in such a way that you can customize your own one by
 #' just wrapping the call and changing the parameters.
 #' The theme itself is heavily influenced by hrbrmstr and his package
 #' hrbrthemes (\url{https://github.com/hrbrmstr/hrbrthemes/}).
-#'
-#' @seealso \code{\link{util_import_roboto_condensed}}
-#'
-#' @examples
-#' # nolint start
-#' \dontrun{
-#' # provided example map
-#' x <- fbmmap
-#' # classify
-#' y <- c(0.5, 0.15, 0.25)
-#' y <- util_classify(x, y, c("1", "2", "3"))
-#'
-#' # color + continuous
-#' rasterVis::gplot(x) +
-#'   ggplot2::geom_tile(ggplot2::aes(fill = value)) +
-#'   ggplot2::labs(x = "Easting",
-#'                 y = "Northing") +
-#'   theme_nlm() +
-#'   ggplot2::ggtitle("Example map",
-#'                    subtitle = "with continuous viridis color scale") +
-#'   ggplot2::labs(caption = "Example map simulated with the R package NLMR.")
-#'
-#' # grey + continuous
-#' rasterVis::gplot(x) +
-#'   ggplot2::geom_tile(ggplot2::aes(fill = value)) +
-#'   ggplot2::labs(x = "Easting",
-#'                 y = "Northing") +
-#'   theme_nlm_grey() +
-#'   ggplot2::ggtitle("Example map",
-#'                    subtitle = "with continuous grey color scale") +
-#'   ggplot2::labs(caption = "Example map simulated with the R package NLMR.")
-#'
-#' # color + discrete
-#' rasterVis::gplot(y) +
-#'   ggplot2::geom_tile(ggplot2::aes(fill = factor(value))) +
-#'   ggplot2::labs(x = "Easting",
-#'                 y = "Northing") +
-#'   theme_nlm_discrete() +
-#'   ggplot2::ggtitle("Example map",
-#'                    subtitle = "with discrete viridis color scale") +
-#'   ggplot2::labs(caption = "Random map simulated with the R package NLMR.")
-#'
-#' # grey + discrete
-#' rasterVis::gplot(y) +
-#'   ggplot2::geom_tile(ggplot2::aes(fill = factor(value))) +
-#'   ggplot2::labs(x = "Easting",
-#'                 y = "Northing") +
-#'   theme_nlm_grey_discrete() +
-#'   ggplot2::ggtitle("Example map",
-#'                    subtitle = "with discrete grey color scale") +
-#'   ggplot2::labs(caption = "Random map simulated with the R package NLMR.")
-#'
-#' # have a look at theme_facetplot
-#' binary_maps <- util_binarize(x, c(0.3, 0.5, 0.7, 0.9))
-#' util_facetplot(binary_maps)
-#'
-#' # nolint end
-#' }
 #'
 #' @aliases theme_nlm
 #' @rdname theme_nlm
@@ -127,13 +64,13 @@ NULL
 
 #' @rdname theme_nlm
 #' @export
-theme_nlm <- function(base_family = "Roboto Condensed",
+theme_nlm <- function(base_family = NA,
                       base_size = 11.5,
                       plot_title_family = base_family,
                       plot_title_size = 18,
                       plot_title_face = "bold",
                       plot_title_margin = 10,
-                      subtitle_family = if (.Platform$OS.type == "windows") "Roboto Condensed" else "Roboto Condensed Light",
+                      subtitle_family =NA,
                       subtitle_size = 13,
                       subtitle_face = "plain",
                       subtitle_margin = 15,
@@ -141,7 +78,7 @@ theme_nlm <- function(base_family = "Roboto Condensed",
                       strip_text_size = 12,
                       strip_text_face = "plain",
                       strip.background = "grey80",
-                      caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed" else "Roboto Condensed Light",
+                      caption_family =NA,
                       caption_size = 9,
                       caption_face = "plain",
                       caption_margin = 10,
@@ -221,19 +158,11 @@ theme_nlm <- function(base_family = "Roboto Condensed",
   )
 
   # define color scale
-  theme_color <- viridis::scale_fill_viridis(
+  theme_color <-  ggplot2::scale_fill_viridis_c(
     option = viridis_scale,
     direction = 1,
     na.value = "transparent",
-    name = legend_title,
-    guide = ggplot2::guide_colorbar(
-      barheight = ggplot2::unit(40, units = "mm"),
-      barwidth = ggplot2::unit(1, units = "mm"),
-      draw.ulim = FALSE,
-      title.hjust = 0.5,
-      title.vjust = 1.5,
-      label.hjust = 0.5
-    )
+    name = legend_title
   )
 
   # return as list
@@ -244,13 +173,13 @@ theme_nlm <- function(base_family = "Roboto Condensed",
 
 #' @rdname theme_nlm
 #' @export
-theme_nlm_discrete <- function(base_family = "Roboto Condensed",
+theme_nlm_discrete <- function(base_family = NA,
                                base_size = 11.5,
                                plot_title_family = base_family,
                                plot_title_size = 18,
                                plot_title_face = "bold",
                                plot_title_margin = 10,
-                               subtitle_family = if (.Platform$OS.type == "windows") "Roboto Condensed" else "Roboto Condensed Light",
+                               subtitle_family =NA,
                                subtitle_size = 13,
                                subtitle_face = "plain",
                                subtitle_margin = 15,
@@ -258,7 +187,7 @@ theme_nlm_discrete <- function(base_family = "Roboto Condensed",
                                strip_text_size = 12,
                                strip_text_face = "plain",
                                strip.background = "grey80",
-                               caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed" else "Roboto Condensed Light",
+                               caption_family =NA,
                                caption_size = 9,
                                caption_face = "plain",
                                caption_margin = 10,
@@ -338,25 +267,16 @@ theme_nlm_discrete <- function(base_family = "Roboto Condensed",
     )
 
   # define color scale
-  theme_color <- viridis::scale_fill_viridis(
+  theme_color <- ggplot2::scale_fill_viridis_d(
     option = viridis_scale,
     direction = 1,
-    discrete = TRUE,
     na.value = "transparent",
     labels = if (is.null(legend_labels)) {
       ggplot2::waiver()
     } else {
       legend_labels
     },
-    name = legend_title,
-    guide = ggplot2::guide_legend(
-      barheight = ggplot2::unit(40, units = "mm"),
-      barwidth = ggplot2::unit(1, units = "mm"),
-      draw.ulim = FALSE,
-      title.hjust = 0.5,
-      title.vjust = 1.5,
-      label.hjust = 0.5
-    )
+    name = legend_title
   )
 
   # return as list
@@ -367,13 +287,13 @@ theme_nlm_discrete <- function(base_family = "Roboto Condensed",
 
 #' @rdname theme_nlm
 #' @export
-theme_nlm_grey <- function(base_family = "Roboto Condensed",
+theme_nlm_grey <- function(base_family = NA,
                            base_size = 11.5,
                            plot_title_family = base_family,
                            plot_title_size = 18,
                            plot_title_face = "bold",
                            plot_title_margin = 10,
-                           subtitle_family = if (.Platform$OS.type == "windows") "Roboto Condensed" else "Roboto Condensed Light",
+                           subtitle_family =NA,
                            subtitle_size = 13,
                            subtitle_face = "plain",
                            subtitle_margin = 15,
@@ -381,7 +301,7 @@ theme_nlm_grey <- function(base_family = "Roboto Condensed",
                            strip_text_size = 12,
                            strip_text_face = "plain",
                            strip.background = "grey80",
-                           caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed" else "Roboto Condensed Light",
+                           caption_family =NA,
                            caption_size = 9,
                            caption_face = "plain",
                            caption_margin = 10,
@@ -464,15 +384,7 @@ theme_nlm_grey <- function(base_family = "Roboto Condensed",
     low = "#d0d0d0",
     high = "#000000",
     na.value = "transparent",
-    name = legend_title,
-    guide = ggplot2::guide_colorbar(
-      barheight = ggplot2::unit(40, units = "mm"),
-      barwidth = ggplot2::unit(1, units = "mm"),
-      draw.ulim = FALSE,
-      title.hjust = 0.5,
-      title.vjust = 1.5,
-      label.hjust = 0.5
-    )
+    name = legend_title
   )
 
   # return as list
@@ -484,13 +396,13 @@ theme_nlm_grey <- function(base_family = "Roboto Condensed",
 #' @rdname theme_nlm
 #' @export
 theme_nlm_grey_discrete <-
-    function(base_family = "Roboto Condensed",
+    function(base_family = NA,
              base_size = 11.5,
              plot_title_family = base_family,
              plot_title_size = 18,
              plot_title_face = "bold",
              plot_title_margin = 10,
-             subtitle_family = if (.Platform$OS.type == "windows") "Roboto Condensed" else "Roboto Condensed Light",
+             subtitle_family =NA,
              subtitle_size = 13,
              subtitle_face = "plain",
              subtitle_margin = 15,
@@ -498,7 +410,7 @@ theme_nlm_grey_discrete <-
              strip_text_size = 12,
              strip_text_face = "plain",
              strip.background = "grey80",
-             caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed" else "Roboto Condensed Light",
+             caption_family =NA,
              caption_size = 9,
              caption_face = "plain",
              caption_margin = 10,
@@ -584,15 +496,7 @@ theme_nlm_grey_discrete <-
                 ggplot2::waiver()
             } else {
                 legend_labels
-            },
-            guide = ggplot2::guide_legend(
-                barheight = ggplot2::unit(40, units = "mm"),
-                barwidth = ggplot2::unit(1, units = "mm"),
-                draw.ulim = FALSE,
-                title.hjust = 0.5,
-                title.vjust = 1.5,
-                label.hjust = 0.5
-            )
+            }
         )
 
         # return as list
@@ -604,18 +508,18 @@ theme_nlm_grey_discrete <-
 #' @rdname theme_nlm
 #' @export
 theme_facetplot <-
-    function(base_family = "Roboto Condensed",
+    function(base_family = NA,
              base_size = 11.5,
              plot_title_family = base_family,
              plot_title_size = 18,
              plot_title_face = "bold",
              plot_title_margin = 10,
-             subtitle_family = if (.Platform$OS.type == "windows") "Roboto Condensed" else "Roboto Condensed Light",
+             subtitle_family =NA,
              subtitle_size = 13,
              subtitle_face = "plain",
              subtitle_margin = 15,
              strip.background = "grey80",
-             caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed" else "Roboto Condensed Light",
+             caption_family =NA,
              caption_size = 9,
              caption_face = "plain",
              caption_margin = 10,
@@ -659,18 +563,10 @@ theme_facetplot <-
         )
 
         # define color scale
-        theme_color <- viridis::scale_fill_viridis(
-            option = viridis_scale,
-            direction = 1,
-            na.value = "transparent",
-            guide = ggplot2::guide_colorbar(
-                barheight = ggplot2::unit(40, units = "mm"),
-                barwidth = ggplot2::unit(1, units = "mm"),
-                draw.ulim = FALSE,
-                title.hjust = 0.5,
-                title.vjust = 1.5,
-                label.hjust = 0.5
-            )
+        theme_color <-  ggplot2::scale_fill_viridis_c(
+          option = viridis_scale,
+          direction = 1,
+          na.value = "transparent"
         )
 
         # return as list
@@ -678,3 +574,73 @@ theme_facetplot <-
              theme_color)
 
     }
+
+#' @rdname theme_nlm
+#' @export
+theme_facetplot_discrete <-
+  function(base_family = NA,
+           base_size = 11.5,
+           plot_title_family = base_family,
+           plot_title_size = 18,
+           plot_title_face = "bold",
+           plot_title_margin = 10,
+           subtitle_family =NA,
+           subtitle_size = 13,
+           subtitle_face = "plain",
+           subtitle_margin = 15,
+           strip.background = "grey80",
+           caption_family =NA,
+           caption_size = 9,
+           caption_face = "plain",
+           caption_margin = 10,
+           ratio = 1,
+           viridis_scale = "D",
+           ...) {
+    # start with minimal theme
+    theme_base <- ggplot2::theme(
+      axis.title  = ggplot2::element_blank(),
+      axis.ticks  = ggplot2::element_blank(),
+      axis.text   = ggplot2::element_blank(),
+      panel.grid  = ggplot2::element_blank(),
+      axis.line   = ggplot2::element_blank(),
+      strip.background = ggplot2::element_rect(fill = "grey80"),
+      strip.text = ggplot2::element_text(hjust  = 0,
+                                         size   = base_size,
+                                         family = base_family),
+      plot.title = ggplot2::element_text(
+        hjust = 0,
+        size = plot_title_size,
+        margin = ggplot2::margin(b = plot_title_margin),
+        family = plot_title_family,
+        face = plot_title_face
+      ),
+      plot.subtitle = ggplot2::element_text(
+        hjust = 0,
+        size = subtitle_size,
+        margin = ggplot2::margin(b = subtitle_margin),
+        family = subtitle_family,
+        face = subtitle_face
+      ),
+      plot.caption = ggplot2::element_text(
+        hjust = 1,
+        size = caption_size,
+        margin = ggplot2::margin(t = caption_margin),
+        family = caption_family,
+        face = caption_face
+      ),
+      plot.margin = ggplot2::unit(c(0, 0, 0, 0), "lines"),
+      ...
+    )
+
+    # define color scale
+    theme_color <- ggplot2::scale_fill_viridis_d(
+      option = viridis_scale,
+      direction = 1,
+      na.value = "transparent"
+    )
+
+    # return as list
+    list(theme_base,
+         theme_color)
+
+  }

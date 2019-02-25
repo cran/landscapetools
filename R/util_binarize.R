@@ -7,26 +7,26 @@
 #' one percentage is given multiple layers are written in the same brick.
 #'
 #' @param x Raster* object
-#'
 #' @param breaks Vector with one or more break percentages
 #'
 #' @return RasterLayer / RasterBrick
 #'
 #' @examples
 #' breaks <- c(0.3, 0.5)
-#' (binary_maps <- util_binarize(fbmmap, breaks))
+#' binary_maps <- util_binarize(gradient_landscape, breaks)
 #'
 #' @aliases util_binarize
 #' @rdname util_binarize
 #'
 #' @export
-#'
+util_binarize <- function(x, breaks) UseMethod("util_binarize")
 
-util_binarize <- function(x, breaks) {
+#' @name util_binarize
+#' @export
+util_binarize.RasterLayer <- function(x, breaks) {
 
   # Check function arguments ----
-  checkmate::assert_class(x, "RasterLayer")
-  checkmate::assert_atomic_vector(breaks)
+  if(is.numeric(breaks) == FALSE) stop("breaks must be a numeric vector")
 
   if (length(breaks) > 1) {
     map.stack <- raster::stack()
@@ -35,7 +35,7 @@ util_binarize <- function(x, breaks) {
         map.stack,
         util_classify(
           x,
-          c(1 - breaks[i], breaks[i]),
+          weighting = c(1 - breaks[i], breaks[i]),
           c("Matrix", "Habitat")
         )
       )
@@ -45,7 +45,7 @@ util_binarize <- function(x, breaks) {
   } else {
     r <- util_classify(
       x,
-      c(1 - breaks, breaks),
+      weighting = c(1 - breaks, breaks),
       c("Matrix", "Habitat")
     )
   }

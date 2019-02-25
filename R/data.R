@@ -5,7 +5,7 @@
 #'
 #' @format A raster layer object.
 #' @source Simulated neutral landscape models with R. \url{https://github.com/ropensci/NLMR/}
-"fbmmap"
+"fractal_landscape"
 
 #' Example map (planar gradient).
 #'
@@ -14,7 +14,7 @@
 #'
 #' @format A raster layer object.
 #' @source Simulated neutral landscape models with R. \url{https://github.com/ropensci/NLMR/}
-"grdmap"
+"gradient_landscape"
 
 #' Example map (random).
 #'
@@ -23,4 +23,13 @@
 #'
 #' @format A raster layer object.
 #' @source Simulated neutral landscape models with R. \url{https://github.com/ropensci/NLMR/}
-"rndmap"
+"random_landscape"
+
+#' Example map (factor).
+#'
+#' An example map to show landscapetools functionality
+#' generated with the nlm_random() algorithm with factorial values.
+#'
+#' @format A raster layer object.
+#' @source Simulated neutral landscape models with R. \url{https://github.com/ropensci/NLMR/}
+"classified_landscape"

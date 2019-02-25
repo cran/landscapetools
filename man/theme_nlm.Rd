@@ -6,18 +6,16 @@
 \alias{theme_nlm_grey}
 \alias{theme_nlm_grey_discrete}
 \alias{theme_facetplot}
+\alias{theme_facetplot_discrete}
 \title{theme_nlm}
 \usage{
-theme_nlm(base_family = "Roboto Condensed", base_size = 11.5,
+theme_nlm(base_family = NA, base_size = 11.5,
   plot_title_family = base_family, plot_title_size = 18,
   plot_title_face = "bold", plot_title_margin = 10,
-  subtitle_family = if (.Platform$OS.type == "windows")
-  "Roboto Condensed" else "Roboto Condensed Light", subtitle_size = 13,
-  subtitle_face = "plain", subtitle_margin = 15,
-  strip_text_family = base_family, strip_text_size = 12,
-  strip_text_face = "plain", strip.background = "grey80",
-  caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed"
-  else "Roboto Condensed Light", caption_size = 9,
+  subtitle_family = NA, subtitle_size = 13, subtitle_face = "plain",
+  subtitle_margin = 15, strip_text_family = base_family,
+  strip_text_size = 12, strip_text_face = "plain",
+  strip.background = "grey80", caption_family = NA, caption_size = 9,
   caption_face = "plain", caption_margin = 10,
   axis_text_size = base_size, axis_title_family = base_family,
   axis_title_size = 9, axis_title_face = "plain",
@@ -27,16 +25,13 @@ theme_nlm(base_family = "Roboto Condensed", base_size = 11.5,
   legend_labels = NULL, legend_text_size = 8, legend_title_size = 10,
   ratio = 1, viridis_scale = "D", ...)
 
-theme_nlm_discrete(base_family = "Roboto Condensed", base_size = 11.5,
+theme_nlm_discrete(base_family = NA, base_size = 11.5,
   plot_title_family = base_family, plot_title_size = 18,
   plot_title_face = "bold", plot_title_margin = 10,
-  subtitle_family = if (.Platform$OS.type == "windows")
-  "Roboto Condensed" else "Roboto Condensed Light", subtitle_size = 13,
-  subtitle_face = "plain", subtitle_margin = 15,
-  strip_text_family = base_family, strip_text_size = 12,
-  strip_text_face = "plain", strip.background = "grey80",
-  caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed"
-  else "Roboto Condensed Light", caption_size = 9,
+  subtitle_family = NA, subtitle_size = 13, subtitle_face = "plain",
+  subtitle_margin = 15, strip_text_family = base_family,
+  strip_text_size = 12, strip_text_face = "plain",
+  strip.background = "grey80", caption_family = NA, caption_size = 9,
   caption_face = "plain", caption_margin = 10,
   axis_text_size = base_size, axis_title_family = base_family,
   axis_title_size = 9, axis_title_face = "plain",
@@ -46,16 +41,13 @@ theme_nlm_discrete(base_family = "Roboto Condensed", base_size = 11.5,
   legend_labels = NULL, legend_text_size = 8, legend_title_size = 10,
   ratio = 1, viridis_scale = "D", ...)
 
-theme_nlm_grey(base_family = "Roboto Condensed", base_size = 11.5,
+theme_nlm_grey(base_family = NA, base_size = 11.5,
   plot_title_family = base_family, plot_title_size = 18,
   plot_title_face = "bold", plot_title_margin = 10,
-  subtitle_family = if (.Platform$OS.type == "windows")
-  "Roboto Condensed" else "Roboto Condensed Light", subtitle_size = 13,
-  subtitle_face = "plain", subtitle_margin = 15,
-  strip_text_family = base_family, strip_text_size = 12,
-  strip_text_face = "plain", strip.background = "grey80",
-  caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed"
-  else "Roboto Condensed Light", caption_size = 9,
+  subtitle_family = NA, subtitle_size = 13, subtitle_face = "plain",
+  subtitle_margin = 15, strip_text_family = base_family,
+  strip_text_size = 12, strip_text_face = "plain",
+  strip.background = "grey80", caption_family = NA, caption_size = 9,
   caption_face = "plain", caption_margin = 10,
   axis_text_size = base_size, axis_title_family = base_family,
   axis_title_size = 9, axis_title_face = "plain",
@@ -65,16 +57,13 @@ theme_nlm_grey(base_family = "Roboto Condensed", base_size = 11.5,
   legend_labels = NULL, legend_text_size = 8, legend_title_size = 10,
   ratio = 1, ...)
 
-theme_nlm_grey_discrete(base_family = "Roboto Condensed",
-  base_size = 11.5, plot_title_family = base_family,
-  plot_title_size = 18, plot_title_face = "bold",
-  plot_title_margin = 10, subtitle_family = if (.Platform$OS.type ==
-  "windows") "Roboto Condensed" else "Roboto Condensed Light",
-  subtitle_size = 13, subtitle_face = "plain", subtitle_margin = 15,
-  strip_text_family = base_family, strip_text_size = 12,
-  strip_text_face = "plain", strip.background = "grey80",
-  caption_family = if (.Platform$OS.type == "windows") "Roboto Condensed"
-  else "Roboto Condensed Light", caption_size = 9,
+theme_nlm_grey_discrete(base_family = NA, base_size = 11.5,
+  plot_title_family = base_family, plot_title_size = 18,
+  plot_title_face = "bold", plot_title_margin = 10,
+  subtitle_family = NA, subtitle_size = 13, subtitle_face = "plain",
+  subtitle_margin = 15, strip_text_family = base_family,
+  strip_text_size = 12, strip_text_face = "plain",
+  strip.background = "grey80", caption_family = NA, caption_size = 9,
   caption_face = "plain", caption_margin = 10,
   axis_text_size = base_size, axis_title_family = base_family,
   axis_title_size = 9, axis_title_face = "plain",
@@ -84,16 +73,21 @@ theme_nlm_grey_discrete(base_family = "Roboto Condensed",
   legend_labels = NULL, legend_text_size = 8, legend_title_size = 10,
   ratio = 1, ...)
 
-theme_facetplot(base_family = "Roboto Condensed", base_size = 11.5,
+theme_facetplot(base_family = NA, base_size = 11.5,
   plot_title_family = base_family, plot_title_size = 18,
   plot_title_face = "bold", plot_title_margin = 10,
-  subtitle_family = if (.Platform$OS.type == "windows")
-  "Roboto Condensed" else "Roboto Condensed Light", subtitle_size = 13,
-  subtitle_face = "plain", subtitle_margin = 15,
-  strip.background = "grey80", caption_family = if (.Platform$OS.type
-  == "windows") "Roboto Condensed" else "Roboto Condensed Light",
-  caption_size = 9, caption_face = "plain", caption_margin = 10,
-  ratio = 1, viridis_scale = "D", ...)
+  subtitle_family = NA, subtitle_size = 13, subtitle_face = "plain",
+  subtitle_margin = 15, strip.background = "grey80",
+  caption_family = NA, caption_size = 9, caption_face = "plain",
+  caption_margin = 10, ratio = 1, viridis_scale = "D", ...)
+
+theme_facetplot_discrete(base_family = NA, base_size = 11.5,
+  plot_title_family = base_family, plot_title_size = 18,
+  plot_title_face = "bold", plot_title_margin = 10,
+  subtitle_family = NA, subtitle_size = 13, subtitle_face = "plain",
+  subtitle_margin = 15, strip.background = "grey80",
+  caption_family = NA, caption_size = 9, caption_face = "plain",
+  caption_margin = 10, ratio = 1, viridis_scale = "D", ...)
 }
 \arguments{
 \item{base_family}{base font family size}
@@ -157,7 +151,7 @@ theme_facetplot(base_family = "Roboto Condensed", base_size = 11.5,
 \item{legend_title}{Title of the legend (default \code{"Z"})}
 
 \item{legend_labels}{Labels for the legend ticks, if
-used with \code{\link{util_plot}} they are automatically derived.}
+used with \code{\link{show_landscape}} they are automatically derived.}
 
 \item{legend_text_size}{legend text size, default 8}
 
@@ -181,73 +175,8 @@ Opinionated ggplot2 theme to visualize NLM raster.
 A focused theme to visualize raster data that sets a lot of defaults for the
 \code{ggplot2::theme}.
 
-The theme can make use of the Roboto Condensed font (Open Source font from
-Google).
-If your local font library does not contain Roboto as a font, you can
-import it via \code{\link{util_import_roboto_condensed}} (highly recommended).
-
 The functions are setup in such a way that you can customize your own one by
 just wrapping the call and changing the parameters.
 The theme itself is heavily influenced by hrbrmstr and his package
 hrbrthemes (\url{https://github.com/hrbrmstr/hrbrthemes/}).
-}
-\examples{
-# nolint start
-\dontrun{
-# provided example map
-x <- fbmmap
-# classify
-y <- c(0.5, 0.15, 0.25)
-y <- util_classify(x, y, c("1", "2", "3"))
-
-# color + continuous
-rasterVis::gplot(x) +
-  ggplot2::geom_tile(ggplot2::aes(fill = value)) +
-  ggplot2::labs(x = "Easting",
-                y = "Northing") +
-  theme_nlm() +
-  ggplot2::ggtitle("Example map",
-                   subtitle = "with continuous viridis color scale") +
-  ggplot2::labs(caption = "Example map simulated with the R package NLMR.")
-
-# grey + continuous
-rasterVis::gplot(x) +
-  ggplot2::geom_tile(ggplot2::aes(fill = value)) +
-  ggplot2::labs(x = "Easting",
-                y = "Northing") +
-  theme_nlm_grey() +
-  ggplot2::ggtitle("Example map",
-                   subtitle = "with continuous grey color scale") +
-  ggplot2::labs(caption = "Example map simulated with the R package NLMR.")
-
-# color + discrete
-rasterVis::gplot(y) +
-  ggplot2::geom_tile(ggplot2::aes(fill = factor(value))) +
-  ggplot2::labs(x = "Easting",
-                y = "Northing") +
-  theme_nlm_discrete() +
-  ggplot2::ggtitle("Example map",
-                   subtitle = "with discrete viridis color scale") +
-  ggplot2::labs(caption = "Random map simulated with the R package NLMR.")
-
-# grey + discrete
-rasterVis::gplot(y) +
-  ggplot2::geom_tile(ggplot2::aes(fill = factor(value))) +
-  ggplot2::labs(x = "Easting",
-                y = "Northing") +
-  theme_nlm_grey_discrete() +
-  ggplot2::ggtitle("Example map",
-                   subtitle = "with discrete grey color scale") +
-  ggplot2::labs(caption = "Random map simulated with the R package NLMR.")
-
-# have a look at theme_facetplot
-binary_maps <- util_binarize(x, c(0.3, 0.5, 0.7, 0.9))
-util_facetplot(binary_maps)
-
-# nolint end
-}
-
-}
-\seealso{
-\code{\link{util_import_roboto_condensed}}
 }
